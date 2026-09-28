@@ -12,5 +12,5 @@ loginForm.addEventListener("submit", function (e) {
   localStorage.setItem("userContact", contact);
   localStorage.setItem("userRole", role);
 
-  window.location.href = "index.html";
+  window.location.href = "home.html";
 });
