@@ -3,197 +3,35 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hospital Navigation System</title>
+<title>Hospital Navigatory System — Login</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">Medi<span>Path</span></div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#departments">Departments</a></li>
-        <li><a href="#floors">Floor Guide</a></li>
-        <li><a href="#location">Visit Us</a></li>
-        <li><a href="#appointment">Appointment</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    <a href="#emergency" class="emergency-btn" id="emergencyModeBtn">Emergency</a>
-    <button class="theme-toggle" id="themeToggle"> Dark</button>
-  </header>
+  <div class="login-page">
+    <div class="login-card">
+      <div class="logo">Medi<span>Path</span></div>
+      <h1>Welcome Back</h1>
+      <p>Log in to continue to the hospital navigation system.</p>
 
-  <!-- Role banner -->
-  <div class="role-banner" id="roleBanner"></div>
+      <form class="appt-form" id="loginForm">
+        <input type="text" id="loginName" placeholder="Full Name" required>
+        <input type="text" id="loginContact" placeholder="Email or Phone Number" required>
 
-  <!-- Hero Section with background image -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Find your way,<br>without the wander.</h1>
-      <p>Search any room, department, or doctor — get instant walking directions inside the hospital.</p>
-    </div>
+        <select id="loginRole" required>
+          <option value="" disabled selected>I am here as...</option>
+          <option value="visitor">Visitor</option>
+          <option value="checkup">Regular Checkup</option>
+          <option value="patient">Patient</option>
+        </select>
 
-    <div class="search-card">
-      <input type="text" id="searchInput" placeholder="Search department, room number or doctor...">
-      <button type="button" id="searchBtn">Get Directions</button>
-    </div>
-
-    <!-- Quick access to the two most-used departments -->
-    <div class="quick-access">
-      <button class="quick-btn" id="quickEmergency">Emergency</button>
-      <button class="quick-btn" id="quickReception"> Reception</button>
-    </div>
-  </section>
-
-  <!-- Departments Section -->
-  <section class="departments" id="departments">
-    <h2>Where do you need to go?</h2>
-
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active" data-category="all">All</button>
-      <button class="filter-btn" data-category="ward">Ward</button>
-      <button class="filter-btn" data-category="emergency">Emergency</button>
-      <button class="filter-btn" data-category="laboratory">Laboratory</button>
-      <button class="filter-btn" data-category="opd">Opd</button>
-      <button class="filter-btn" data-category="today"> Available Today</button>
-    </div>
-
-    <div class="dept-grid" id="deptGrid">
-      <!-- Department cards are rendered here by script.js -->
-    </div>
-  </section>
-
-  <!-- Floor Guide -->
-  <section class="floors" id="floors">
-    <h2>Browse by floor</h2>
-    <div class="floor-pills" id="floorPills">
-      <button class="floor-pill active" data-floor="Ground Floor">Ground</button>
-      <button class="floor-pill" data-floor="1st Floor">1st Floor</button>
-      <button class="floor-pill" data-floor="2nd Floor">2nd Floor</button>
-      <button class="floor-pill" data-floor="3rd Floor">3rd Floor</button>
-    </div>
-    <div class="floor-map" id="floorMap">
-      <p>Select a floor to see its departments here.</p>
-    </div>
-  </section>
-
-  <!-- Sample Hospital Location -->
-  <section class="location" id="location">
-    <h2>Visit Us</h2>
-    <div class="location-wrap">
-      <div class="location-info">
-        <h3>MediPath General Hospital</h3>
-        <p> Jail Road, Gulberg, Lahore, Punjab</p>
-        <p>Visiting Hours: 10:00 AM to 8:00 PM (Daily)</p>
-        <p> Parking: Main Gate &amp; Basement</p>
-        <p>Cafeteria: Ground Floor, near Reception</p>
-        <p>Contact: 042-111-000-000</p>
-      </div>
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps?q=Mayo+Hospital+Lahore&output=embed"
-          width="100%"
-          height="100%"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          title="Hospital Location Map">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- Appointment Request Form -->
-  <section class="appointment" id="appointment">
-    <h2>Request an Appointment</h2>
-    <p class="section-sub">Fill out the form and our team will contact you.</p>
-
-    <form class="appt-form" id="apptForm">
-      <input type="text" id="apptName" placeholder="Full Name" required>
-      <input type="tel" id="apptPhone" placeholder="Phone Number" required>
-
-      <select id="apptDept" required>
-        <option value="" disabled selected>Select Department</option>
-      </select>
-
-      <input type="date" id="apptDate" required>
-      <textarea id="apptMessage" placeholder="Additional details (optional)" rows="3"></textarea>
-
-      <button type="submit">Send Request</button>
-    </form>
-
-    <p class="appt-confirmation" id="apptConfirmation"></p>
-  </section>
-
-  <!-- FAQ Section -->
-  <section class="faq" id="faq">
-    <h2>Frequently Asked Questions</h2>
-
-    <div class="faq-list" id="faqList">
-      <div class="faq-item">
-        <button class="faq-question">What are the visiting hours?</button>
-        <div class="faq-answer"><p>Visiting hours are 10:00 AM to 8:00 PM, daily. ICU visits are limited to 5-6 PM only.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Is the Emergency department open 24/7?</button>
-        <div class="faq-answer"><p>Yes, the Emergency department is open 24 hours a day, all seven days of the week.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Is OPD open on Sunday?</button>
-        <div class="faq-answer"><p>No, OPD departments are open Monday through Saturday — closed on Sunday.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Is parking available?</button>
-        <div class="faq-answer"><p>Yes, parking is available at both the Main Gate and the Basement.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">How can I check a doctor's schedule?</button>
-        <div class="faq-answer"><p>Click on any department card — the popup shows the doctor's name, days, and timing.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer id="contact">
-    <div class="footer-col">
-      <h4>MediPath</h4>
-      <p>Helping patients and visitors navigate hospitals with confidence.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Quick Links</h4>
-      <p>Departments</p>
-      <p>Floor Guide</p>
-      <p>Emergency Info</p>
-    </div>
-    <div class="footer-col" id="emergency">
-      <h4>Emergency Contact</h4>
-      <p>Helpline: 1122</p>
-      <p>Front Desk: 042-111-000-000</p>
-    </div>
-  </footer>
-
-  <!-- Department Info Popup -->
-  <div class="modal-overlay" id="modalOverlay">
-    <div class="modal-box">
-      <button class="modal-close" id="modalClose">&times;</button>
-      <span class="modal-tag" id="modalCategory"></span>
-      <h3 id="modalName"></h3>
-      <p><strong>Floor:</strong> <span id="modalFloor"></span></p>
-      <p><strong>Doctor:</strong> <span id="modalDoctor"></span></p>
-      <p><strong>Contact:</strong> <span id="modalContact"></span></p>
-      <p><strong>Timing:</strong> <span id="modalTiming"></span></p>
-      <div class="modal-directions">
-        <strong>Get Directions:</strong>
-        <ol id="modalDirections"></ol>
-      </div>
+        <button type="submit">Login</button>
+      </form>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <script src="login.js"></script>
 </body>
 </html>
